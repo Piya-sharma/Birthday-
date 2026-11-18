@@ -1,0 +1,982 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 21st Birthday Gaurav ❤️</title>
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #c9183b;
+  --dark: #790d27;
+  --pink: #fff0f3;
+  --text: #541528;
+}
+
+body {
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg,#fff5f5,#ffe0e8);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* FLOATING HEARTS */
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  color: #e34b6b;
+  opacity: .25;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+/* PAGE SYSTEM */
+
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 35px 18px;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn .7s ease;
+}
+
+.page.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  width: min(850px,100%);
+  text-align: center;
+  padding: 35px 25px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid #f5c5d0;
+  border-radius: 28px;
+  box-shadow: 0 15px 50px rgba(121,13,39,.12);
+}
+
+.eyebrow {
+  color: var(--red);
+  font: bold 11px Arial;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: var(--dark);
+  font-size: clamp(40px,8vw,75px);
+  margin: 25px 0;
+}
+
+h2 {
+  color: var(--dark);
+  font-size: clamp(30px,6vw,46px);
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.heart-icon {
+  color: var(--red);
+  font-size: 40px;
+  margin: 15px;
+}
+
+/* BUTTONS */
+
+.btn {
+  background: var(--red);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 25px 5px 5px;
+  transition: .3s;
+  box-shadow: 0 7px 20px rgba(201,24,59,.2);
+}
+
+.btn:hover {
+  background: var(--dark);
+  transform: translateY(-3px);
+}
+
+.btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.back-btn {
+  background: #f5d4dd;
+  color: var(--dark);
+}
+
+.page-number {
+  color: #b66a7c;
+  font: 12px Arial;
+  margin-top: 22px;
+  letter-spacing: 2px;
+}
+
+/* LETTER */
+
+.letter {
+  text-align: left;
+  background: #fff7f8;
+  border-radius: 20px;
+  padding: 25px;
+  line-height: 2;
+  font-size: 17px;
+  white-space: pre-line;
+}
+
+.signature {
+  color: var(--red);
+  font-size: 25px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* PHOTO GALLERY */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.photo-slot {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffe5eb;
+  border: 4px solid white;
+  box-shadow: 0 5px 15px rgba(121,13,39,.12);
+  min-height: 220px;
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  padding: 12px;
+  color: var(--dark);
+  font-size: 14px;
+  background: #fff1f4;
+}
+
+/* REASONS */
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.reason {
+  background: #fff0f3;
+  border: 1px solid #f4c6d1;
+  border-radius: 18px;
+  padding: 20px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.reason b {
+  color: var(--red);
+  font-size: 20px;
+}
+
+/* FINAL BIRTHDAY PAGE */
+
+.cake {
+  font-size: 80px;
+  margin: 20px;
+}
+
+.final-message {
+  display: none;
+  margin-top: 25px;
+  font-size: 21px;
+  line-height: 1.8;
+  color: var(--dark);
+  animation: fadeIn 1s ease;
+}
+
+/* MARRIAGE PROPOSAL PAGE */
+
+#proposalArea {
+  position: relative;
+  height: 120px;
+  margin: 25px auto 0;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+#yesButton,
+#noButton {
+  position: absolute;
+  margin: 0;
+  transition: left .25s ease, top .25s ease;
+}
+
+#yesButton {
+  left: 20%;
+  top: 25px;
+}
+
+#noButton {
+  left: 55%;
+  top: 25px;
+  background: #f5d4dd;
+  color: var(--dark);
+}
+
+#conditionBox {
+  background: #fff0f3;
+  border: 1px solid #f4c6d1;
+  border-radius: 18px;
+  padding: 22px;
+  margin-top: 25px;
+  line-height: 1.8;
+}
+
+#loveCondition {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--red);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+#conditionMessage {
+  color: var(--red);
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.proposal-message {
+  display: none;
+  margin-top: 25px;
+  animation: fadeIn 1s ease;
+}
+
+.proposal-message h2 {
+  color: var(--red);
+}
+
+.proposal-message p {
+  font-size: 20px;
+  line-height: 1.9;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  color: #ad6579;
+  font-size: 12px;
+}
+
+@media(max-width:600px) {
+
+  .container {
+    padding: 28px 16px;
+  }
+
+  .memory-grid,
+  .reasons {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-slot img {
+    height: 280px;
+  }
+
+  .letter {
+    padding: 18px;
+    font-size: 15px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="floating-hearts" id="hearts"></div>
+
+
+<!-- PAGE 1: WELCOME -->
+
+<div class="page active" id="page1">
+
+  <div class="container">
+
+    <div class="heart-icon">♥ ♥ ♥</div>
+
+    <div class="eyebrow">
+      A special day for someone special
+    </div>
+
+    <h1>
+      HAPPIYY <br>
+      21st BIRTHDAY
+      <br>
+      GAURAV bbyyy!
+    </h1>
+
+    <p>
+      Today is not just another day...
+      It's the birthday of my favourite
+      human, my bby! 🥹❤️
+    </p>
+
+    <p style="margin-top:15px">
+      I have made something special for you.
+      So are you ready?
+    </p>
+
+    <button class="btn" onclick="nextPage(2)">
+      Open Your Surprise ❤️ →
+    </button>
+
+    <div class="page-number">01 / 06</div>
+
+  </div>
+
+</div>
+
+
+<!-- PAGE 2: LETTER -->
+
+<div class="page" id="page2">
+
+  <div class="container">
+
+    <div class="heart-icon">💌</div>
+
+    <div class="eyebrow">A letter from my heart</div>
+
+    <h2>Here Is Your Wish, Bby!</h2>
+
+    <div class="letter">
+
+Happiest Birthday, meri jaan! ❤️
+
+I hope you know how special you are to me.
+You make ordinary days feel a little brighter
+just by being in them.
+
+Your smile, your silly talks, the little moments
+we share and even the times you annoy me
+(yes, those too!) mean more to me than I can explain.
+
+I wish this new year of your life brings you
+happiness, peace, good health and success
+in everything you work for.
+
+May all your dreams come true and may you
+always have countless reasons to smile.
+
+Thank you for being you, bby .
+
+I hope we keep making beautiful memories,
+laughing at our silly jokes and choosing each
+other through all the little ups and downs.
+
+I want you to know that you are genuinely
+one of the most special people in my life.
+
+I love you so much, bby! ❤️
+
+    </div>
+
+    <div class="signature">
+      Always yours, with lots of love ♥
+    </div>
+
+    <button class="btn back-btn" onclick="nextPage(1)">
+      ← Previous
+    </button>
+
+    <button class="btn" onclick="nextPage(3)">
+      Next: Our Memories →
+    </button>
+
+    <div class="page-number">02 / 06</div>
+
+  </div>
+
+</div>
+
+
+<!-- PAGE 3: PHOTO GALLERY -->
+
+<div class="page" id="page3">
+
+  <div class="container">
+
+    <div class="heart-icon">📸</div>
+
+    <div class="eyebrow">Our little world</div>
+
+    <h2>Our Beautiful Memories</h2>
+
+    <p>
+      A collection of moments that I never
+      want to forget. Every picture has a
+      little piece of my heart. ❤️
+    </p>
+
+    <div class="memory-grid">
+
+      <!-- PHOTO 1 -->
+
+      <div class="photo-slot">
+        <img src="2.jpeg" alt="Memory 1">
+        <div class="caption">My favourite memory ❤️</div>
+      </div>
+
+      <!-- PHOTO 2 -->
+
+      <div class="photo-slot">
+        <img src="1.jpeg" alt="Memory 2">
+        <div class="caption">My favourite person 🥹</div>
+      </div>
+
+      <!-- PHOTO 3 -->
+
+      <div class="photo-slot">
+        <img src="3.jpeg" alt="Memory 3">
+        <div class="caption">Us being us 💗</div>
+      </div>
+
+      <!-- PHOTO 4 -->
+
+      <div class="photo-slot">
+        <img src="4.jpeg" alt="Memory 4">
+        <div class="caption">A moment to remember 💕</div>
+      </div>
+
+      <!-- PHOTO 5 -->
+
+      <div class="photo-slot">
+        <img src="5.jpeg" alt="Memory 5">
+        <div class="caption">My cutest boy ❤️</div>
+      </div>
+
+      <!-- PHOTO 6 -->
+
+      <div class="photo-slot">
+        <img src="6.jpeg" alt="Memory 6">
+        <div class="caption">Forever a favourite memory 🫶</div>
+      </div>
+
+    </div>
+
+    <button class="btn back-btn" onclick="nextPage(2)">
+      ← Previous
+    </button>
+
+    <button class="btn" onclick="nextPage(4)">
+      Next: A Little More Love →
+    </button>
+
+    <div class="page-number">03 / 06</div>
+
+  </div>
+
+</div>
+
+
+<!-- PAGE 4: REASONS -->
+
+<div class="page" id="page4">
+
+  <div class="container">
+
+    <div class="heart-icon">❤️</div>
+
+    <div class="eyebrow">Just a few little things</div>
+
+    <h2>Why You're My Favourite!</h2>
+
+    <p>
+      I could write a thousand reasons,
+      but here are six of them. 🥹
+    </p>
+
+    <div class="reasons">
+
+      <div class="reason">
+        <b>01 ♥</b><br>
+        Your smile can turn my whole day around.
+      </div>
+
+      <div class="reason">
+        <b>02 ♥</b><br>
+        You make even the simplest moments special.
+      </div>
+
+      <div class="reason">
+        <b>03 ♥</b><br>
+        I can be completely silly around you.
+      </div>
+
+      <div class="reason">
+        <b>04 ♥</b><br>
+        You are my favourite person to annoy.
+      </div>
+
+      <div class="reason">
+        <b>05 ♥</b><br>
+        I love seeing you chase your dreams.
+      </div>
+
+      <div class="reason">
+        <b>06 ♥</b><br>
+        Simply because you're YOU. ❤️
+      </div>
+
+    </div>
+
+    <button class="btn back-btn" onclick="nextPage(3)">
+      ← Previous
+    </button>
+
+    <button class="btn" onclick="nextPage(5)">
+      One Last Birthday Surprise →
+    </button>
+
+    <div class="page-number">04 / 06</div>
+
+  </div>
+
+</div>
+
+
+<!-- PAGE 5: MAKE A WISH -->
+
+<div class="page" id="page5">
+
+  <div class="container">
+
+    <div class="eyebrow">The birthday surprise</div>
+
+    <div class="heart-icon">❤️</div>
+
+    <h2>Make A Wish, Bby!</h2>
+
+    <div class="cake">🎂</div>
+
+    <p>
+      Close your eyes, make a wish
+      and get ready for your special moment.
+    </p>
+
+    <button class="btn" id="wishButton"
+      onclick="showFinalWish()">
+      My Wish Is Made! ❤️
+    </button>
+
+    <div class="final-message" id="finalMessage">
+
+      I hope all your wishes come true, Gaurav!
+
+      <br><br>
+
+      May your life always be filled with
+      happiness, success, love and endless smiles.
+
+      <br><br>
+
+      And my wish?
+
+      <br>
+
+      More beautiful memories with you,
+      more silly fights, more laughter
+      and many more birthdays together.
+
+      <br><br>
+
+      Happiest Birthday once again, my bby!
+
+      I LOVE YOU SO MUCHHH! ❤️🥹
+
+      <div style="font-size:35px;margin-top:20px">
+        ♥ ♥ ♥
+      </div>
+
+    </div>
+
+    <button class="btn back-btn" onclick="nextPage(4)">
+      ← Previous
+    </button>
+
+    <button class="btn" onclick="nextPage(6)">
+      One More Question For You 💍 →
+    </button>
+
+    <div class="page-number">05 / 06</div>
+
+  </div>
+
+</div>
+
+
+<!-- PAGE 6: MARRY ME -->
+
+<div class="page" id="page6">
+
+  <div class="container">
+
+    <div class="heart-icon">💍❤️</div>
+
+    <div class="eyebrow">
+      One last question, my love
+    </div>
+
+    <h2>Do You Want To Marry Me?</h2>
+
+    <p>
+      Gaurav, will you be mine forever? 🥹
+
+      <br>
+
+      Are you ready for a lifetime of love,
+      laughter and silly fights?
+    </p>
+
+    <div style="font-size:65px;margin:25px">
+      💑
+    </div>
+
+    <!-- LOVE CONDITION -->
+
+    <div id="conditionBox">
+
+      <label style="cursor:pointer;line-height:1.8">
+
+        <input type="checkbox"
+          id="loveCondition"
+          onchange="checkCondition()">
+
+        Promise me that you will always love me
+        lots and lots, pamper me, support me
+        and never stop choosing me! ❤️
+
+      </label>
+
+    </div>
+
+    <p id="conditionMessage">
+      First complete this little promise, bby! 🥺
+    </p>
+
+    <!-- YES / NO BUTTONS -->
+
+    <div id="proposalArea">
+
+      <button class="btn"
+        id="yesButton"
+        onclick="acceptProposal()"
+        disabled>
+
+        YES! 💍
+
+      </button>
+
+      <button class="btn"
+        id="noButton">
+
+        NO 🙄
+
+      </button>
+
+    </div>
+
+    <!-- FINAL PROPOSAL MESSAGE -->
+
+    <div class="proposal-message"
+      id="proposalMessage">
+
+      <h2>YAYYYYY! ❤️🥹</h2>
+
+      <div style="font-size:65px">
+        💍💐
+      </div>
+
+      <p>
+
+        You said YESSSS!!
+
+        <br><br>
+
+        Congratulations to us, bby!
+
+        <br>
+
+        I can't wait to create a million
+        beautiful memories with you.
+
+        <br><br>
+
+        Forever sounds perfect with you.
+
+        <br>
+
+        I LOVE YOU SO MUCHHH! ❤️
+
+      </p>
+
+    </div>
+
+    <button class="btn back-btn"
+      onclick="nextPage(5)">
+
+      ← Previous
+
+    </button>
+
+    <div class="page-number">06 / 06</div>
+
+  </div>
+
+</div>
+
+
+<footer>
+  Made with endless love, just for Gaurav ❤️
+</footer>
+
+
+<script>
+
+/* PAGE NAVIGATION */
+
+function nextPage(pageNumber) {
+
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById('page' + pageNumber)
+    .classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+}
+
+
+/* FLOATING HEARTS */
+
+const heartLayer = document.getElementById('hearts');
+
+for (let i = 0; i < 25; i++) {
+
+  const heart = document.createElement('span');
+
+  heart.className = 'heart';
+
+  heart.textContent =
+    Math.random() > 0.5 ? '♥' : '♡';
+
+  heart.style.left = Math.random() * 100 + '%';
+
+  heart.style.fontSize =
+    (15 + Math.random() * 25) + 'px';
+
+  heart.style.animationDuration =
+    (10 + Math.random() * 12) + 's';
+
+  heart.style.animationDelay =
+    (-Math.random() * 20) + 's';
+
+  heartLayer.appendChild(heart);
+
+}
+
+
+/* BIRTHDAY WISH */
+
+function showFinalWish() {
+
+  document.getElementById('finalMessage')
+    .style.display = 'block';
+
+  const button =
+    document.getElementById('wishButton');
+
+  button.textContent = 'Wish Sent With Love ❤️';
+
+  button.disabled = true;
+
+}
+
+
+/* MARRIAGE CONDITION */
+
+const yesButton =
+  document.getElementById('yesButton');
+
+const noButton =
+  document.getElementById('noButton');
+
+const loveCondition =
+  document.getElementById('loveCondition');
+
+
+/* CHECK CONDITION */
+
+function checkCondition() {
+
+  if (loveCondition.checked) {
+
+    yesButton.disabled = false;
+
+    document.getElementById('conditionMessage')
+      .textContent =
+      "Promise accepted! Now you can answer, bby! ❤️";
+
+  } else {
+
+    yesButton.disabled = true;
+
+    document.getElementById('conditionMessage')
+      .textContent =
+      "First complete this little promise, bby! 🥺";
+
+  }
+
+}
+
+
+/* YES BUTTON MOVEMENT */
+
+function moveYesButton() {
+
+  if (yesButton.disabled) return;
+
+  const area =
+    document.getElementById('proposalArea');
+
+  const maxX =
+    area.clientWidth - yesButton.offsetWidth;
+
+  const maxY =
+    area.clientHeight - yesButton.offsetHeight;
+
+  yesButton.style.left =
+    Math.random() * Math.max(0, maxX) + 'px';
+
+  yesButton.style.top =
+    Math.random() * Math.max(0, maxY) + 'px';
+
+}
+
+yesButton.addEventListener('mouseenter', moveYesButton);
+
+
+/* NO BUTTON MOVEMENT */
+
+noButton.addEventListener('mouseenter', () => {
+
+  const area =
+    document.getElementById('proposalArea');
+
+  const maxX =
+    area.clientWidth - noButton.offsetWidth;
+
+  const maxY =
+    area.clientHeight - noButton.offsetHeight;
+
+  noButton.style.left =
+    Math.random() * Math.max(0, maxX) + 'px';
+
+  noButton.style.top =
+    Math.random() * Math.max(0, maxY) + 'px';
+
+});
+
+
+/* YES ACCEPTED */
+
+function acceptProposal() {
+
+  if (!loveCondition.checked) return;
+
+  document.getElementById('proposalMessage')
+    .style.display = 'block';
+
+  yesButton.style.display = 'none';
+
+  noButton.style.display = 'none';
+
+  document.getElementById('conditionBox')
+    .style.display = 'none';
+
+  document.getElementById('conditionMessage')
+    .style.display = 'none';
+
+}
+
+</script>
+
+</body>
+</html>
+
+
